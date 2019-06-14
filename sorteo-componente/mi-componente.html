@@ -1,0 +1,26 @@
+<link rel="import" href="../polymer/polymer-element.html" />
+
+<dom-module id="mi-componente">
+     <template>
+          <span>mi nombre es {{name}}</span>
+     </template>
+     <script>
+          Polymer({
+               is: "mi-componente",
+               properties: {
+                    name: {
+                         type: String,
+                         valyue: "default",
+                         notify: true
+                    }
+               },
+               ready: function () {
+                    setTimeout(() => {
+                         this.fire("nameChanged")
+                    }, 3000)
+
+               }
+
+          })
+     </script>
+</dom-module>

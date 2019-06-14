@@ -1,0 +1,69 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./bower_components/paper-button/paper-button.html">
+<link rel="import" href="./mi-componente.html">
+
+<dom-module id="sorteo-componente">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-button{
+        background-color: teal;
+        color: white; 
+      }
+   
+    </style>
+    
+    <paper-button raised id="button">Click</paper-button>
+    
+    
+    <h2 id="titulo">Hola <mi-componente name="{{name}}"></mi-componente>, tengo [[edad]]</h2>
+  </template>
+  <script>
+    Polymer({
+      is: "sorteo-componente",
+      properties:{
+        name: {
+          type: String,
+          value: "Default"
+        },
+        edad: {
+          type: Number
+        }
+      },
+      listeners:{
+        "nameChanged": "clicked",
+        "click": "clicked"
+
+      },
+      created: function() {
+        // console.log("El elemento se creó")
+        // // console.log(this.$.titulo)
+      },
+      ready: function() {
+        // console.log("El elemento está listo")
+        // console.log(this.$.titulo);
+        // this.$.button.addEventListener('click', ()=>{
+        //   this.clicked()
+        // })
+        // this.$$("mi-componente").addEventListener("nameChanged", ()=>{
+        //   this.clicked()
+        // })
+      },
+      attached: function () {
+        // console.log("El elemento está ya en el documento");
+      },
+      detached: function() {
+
+      },
+      attributeChanged: function() {
+        
+      },
+      clicked: function() {
+        this.name = "Hubo un click";
+      }
+    
+    })
+  </script>
+</dom-module>

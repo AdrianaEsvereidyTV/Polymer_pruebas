@@ -1,0 +1,85 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="./hidding-behavior.html">
+
+<dom-module id="form-polymer-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        text-align: center;
+      }
+      paper-card{
+        text-align: left;
+        width:400px;
+        padding:1em;
+      }
+      paper-card .card-actions{
+        text-align: right;
+        padding-top: 1em;
+      }
+      paper-card .card-header{
+        font-size: 2em;
+        color: var(--paper-grey-600);
+        text-align: center;
+      }
+      paper-card .card-header iron-icon{
+        height: 2em;
+        width: 2em;
+        color: var(--paper-teal-200);
+      }
+      paper-button{
+        color: var(--paper-red-600)
+      }
+      paper-button[raised]{
+        background-color: var(--paper-teal-500);
+        color: white;
+        
+      }
+    </style>
+    <paper-card elevation="2" animated-shadow="false">
+      <div class="card-header">
+        <iron-icon icon="account-circle"></iron-icon>Crear cuenta
+      </div>
+      <form is="iron-form" id="form">
+      <div class="card-content">
+        <paper-input label="Email" type="email" value="{{email}}" required></paper-input>
+        <paper-input label="Contraseña" type="password" required></paper-input>
+      </div>
+      <div class="card-actions">
+        
+        <paper-button raised id="login">Enviar</paper-button>
+        <paper-button>Cancelar</paper-button>
+      </div>
+    </form>
+    </paper-card>
+    
+  </template>
+
+  <script>
+    Polymer({
+      is: 'form-polymer-app',
+      properties:{
+        email: {
+          type: String,
+          observer: "_emailChanged"
+        }
+      },
+      behaviors: [FormApp.Hidding],
+      ready: function () {
+        this.$.login.addEventListener("click",()=>{
+          this.$.form.submit()
+        })
+      },
+      _emailChanged: function (nuevoValor, viejoValor) {
+        console.log(nuevoValor);
+        console.log(viejoValor);
+      }
+    })
+  </script>
+</dom-module>

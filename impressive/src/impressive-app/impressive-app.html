@@ -1,0 +1,43 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../impressive-elements/impressive-form.html">
+
+<dom-module id="impressive-app">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .iron-flex{
+        width: 50%;
+        background-color:#eee;
+        height: 100px;
+        margin-right: 1em;
+      }
+    </style>
+    <div class="layout horizontal">
+      <impressive-collection class="iron-flex"></impressive-collection>
+      <impresive-form class="iron-flex"></impresive-form>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class ImpressiveApp extends Polymer.Element {
+      static get is() { return 'impressive-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'impressive-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ImpressiveApp.is, ImpressiveApp);
+  </script>
+</dom-module>
